@@ -35,7 +35,7 @@ echo $NUM_EXAMPLES
 
 rm -rf $PROJECT_HOME
 unzip ~/traffic_police.zip -d ~/content
-exit
+
 python3 xml_to_csv.py --xml_path=$TRAIN_XML --csv_output=$PROJECT_HOME"/train.csv"
 python3 xml_to_csv.py --xml_path=$EVAL_XML --csv_output=$PROJECT_HOME"/validation.csv"
 
@@ -45,6 +45,8 @@ python3 generate_TFR.py --image_path=$EVAL_IMAGE --csv_input=$PROJECT_HOME"/vali
 cp "traffic_police.pbtxt" $PROJECT_HOME
 
 cd $PROJECT_HOME
+ll
+exit
 
 wget $PRETRAINED_MODEL_URL
 tar zxvf $PRETRAINED_MODEL_FILE
