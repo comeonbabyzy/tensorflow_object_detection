@@ -1,5 +1,3 @@
-%%writefile xml_to_csv.py
-
 '''
 只需修改三处，第一第二处改成对应的文件夹目录，
 第三处改成对应的文件名，这里是train.csv
