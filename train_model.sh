@@ -46,9 +46,7 @@ python3 generate_TFR.py --image_path=$EVAL_IMAGE --csv_input=$PROJECT_HOME"/vali
 cp "traffic_police.pbtxt" $PROJECT_HOME
 
 cd $PROJECT_HOME
-ll
-exit
-
+ls -l
 wget $PRETRAINED_MODEL_URL
 tar zxvf $PRETRAINED_MODEL_FILE
 
@@ -67,8 +65,6 @@ sed -i 's/num_examples.*/num_examples: '$NUM_EXAMPLES'/g' $PIPELINE_CONFIG_PATH
 #sed -i 's/batch_size.*/batch_size: 1/g' $PIPELINE_CONFIG_PATH
 
 sed -i 's/fine_tune_checkpoint:.*/fine_tune_checkpoint: "'$FINE_TUNE_CHECKPOINT'"/g' $PIPELINE_CONFIG_PATH
-
-exit
 
 # From the tensorflow/models/research/ directory
 cd $RESEARCH_HOME
