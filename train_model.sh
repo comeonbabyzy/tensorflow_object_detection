@@ -3,7 +3,7 @@
 PROJECT_HOME="/home/opc/content/traffic_police"
 RESEARCH_HOME="/home/opc/content/models/research"
 
-export PYTHONPATH=$PYTHONPATH":$RESEARCH_HOME:$RESEARCH_HOME"/slim"
+export PYTHONPATH=$PYTHONPATH":"$RESEARCH_HOME":"$RESEARCH_HOME"/slim"
 
 # From the tensorflow/models/research/ directory
 cd $RESEARCH_HOME
