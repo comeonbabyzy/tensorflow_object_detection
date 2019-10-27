@@ -13,13 +13,16 @@ sudo pip3 install matplotlib
 sudo pip3 install tensorboardcolab
 sudo pip3 install jupyter
 
+
 cd ~/
+rm -rf content
+mkdir content
+cd content
 
 wget https://github.com/protocolbuffers/protobuf/releases/download/v3.10.0/protoc-3.10.0-linux-x86_64.zip
 unzip protoc-3.10.0-linux-x86_64.zip 
 sudo cp bin/protoc /usr/local/bin
 
-rm -rf models
 git clone https://github.com/tensorflow/models.git
 
 cd models/research
