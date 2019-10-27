@@ -12,6 +12,8 @@ pip3 install lxml
 pip3 install matplotlib
 pip3 install tensorboardcolab
 pip3 install jupyter
+pip3 install pytz
+pip3 install pandas
 
 cd ~/
 rm -rf content
