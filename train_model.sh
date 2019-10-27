@@ -1,7 +1,11 @@
 #!/bin/bash
 
-PROJECT_HOME="~/content/traffic_police"
-RESEARCH_HOME="~/content/models/research"
+PROJECT_HOME="/home/opc/content/traffic_police"
+
+rm -rf $PROJECT_HOME
+unzip /home/opc/traffic_police.zip -d /home/opc/content
+
+RESEARCH_HOME="/home/opc/content/models/research"
 TRAIN_IMAGE=$PROJECT_HOME"/train/images"
 EVAL_IMAGE=$PROJECT_HOME"/validation/images"
 TRAIN_XML=$PROJECT_HOME"/train/annotations"
@@ -32,9 +36,6 @@ echo $FINE_TUNE_CHECKPOINT
 echo $NUM_EXAMPLES
 
 #cd $PROJECT_HOME
-
-rm -rf $PROJECT_HOME
-unzip ~/traffic_police.zip -d ~/content
 
 python3 xml_to_csv.py --xml_path=$TRAIN_XML --csv_output=$PROJECT_HOME"/train.csv"
 python3 xml_to_csv.py --xml_path=$EVAL_XML --csv_output=$PROJECT_HOME"/validation.csv"
