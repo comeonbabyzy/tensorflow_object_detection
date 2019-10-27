@@ -15,3 +15,5 @@ python3 object_detection/model_main.py \
     --num_train_steps=${NUM_TRAIN_STEPS} \
     --sample_1_of_n_eval_examples=$SAMPLE_1_OF_N_EVAL_EXAMPLES \
     --alsologtostderr &
+    
+tensorboard --logdir . --host 0.0.0.0 --port 6006 &
