@@ -15,7 +15,7 @@ PIPELINE_CONFIG_PATH=$PROJECT_HOME"\ssd_mobilenet_v1_coco.config"
 TRAIN_INPUT_PATH=$PROJECT_HOME"/train.record"
 EVAL_INPUT_PATH=$PROJECT_HOME"/validation.record"
 LABEL_MAP_PATH=$PROJECT_HOME"/traffic_police.pbtxt"
-FINE_TUNE_CHECKPOINT=$PROJECT_HOME"/"$PRETRAINED_MODEL"\model.ckpt" #"\/content\/ssd_mobilenet_v1_coco_2018_01_28\/model.ckpt"
+FINE_TUNE_CHECKPOINT=$PROJECT_HOME"/"$PRETRAINED_MODEL"/model.ckpt" #"\/content\/ssd_mobilenet_v1_coco_2018_01_28\/model.ckpt"
 NUM_EXAMPLES=$(ls -l $TRAIN_IMAGE | grep "^-" | wc -l)
 
 echo $PROJECT_HOME
@@ -29,30 +29,32 @@ echo $LABEL_MAP_PATH
 echo $FINE_TUNE_CHECKPOINT
 echo $NUM_EXAMPLES
 
-exit
+
 #cd $PROJECT_HOME
+
+cd ~/
+rm -rf $PROJECT_HOME
+unzip traffic_police.zip
+cp -r traffic_police ~/content
 
 python3 xml_to_csv.py --xml_path=$TRAIN_XML --csv_output=$PROJECT_HOME"/train.csv"
 python3 xml_to_csv.py --xml_path=$EVAL_XML --csv_output=$PROJECT_HOME"/validation.csv"
 
-python3 generate_TFR.py --image_path=$TRAIN_IMAGE --csv_input=$PROJECT_HOME"/train.csv" --output_path=$PROJECT_HOME"/train.record"
-python3 generate_TFR.py --image_path=$EVAL_IMAGE --csv_input=$PROJECT_HOME"/validation.csv" --output_path=$PROJECT_HOME"/validation.record"
+python3 generate_TFR.py --image_path=$TRAIN_IMAGE --csv_input=$PROJECT_HOME"/train.csv" --output_path=$TRAIN_INPUT_PATH
+python3 generate_TFR.py --image_path=$EVAL_IMAGE --csv_input=$PROJECT_HOME"/validation.csv" --output_path=$EVAL_INPUT_PATH
 
 cp "traffic_police.pbtxt" $PROJECT_HOME
 
 cd $PROJECT_HOME
+
+
 
 wget $PRETRAINED_MODEL_URL
 tar zxvf $PRETRAINED_MODEL_FILE
 
 wget $PIPELINE_CONFIG_URL
 
-TRAIN_INPUT_PATH=$PROJECT_HOME"/train.record"
-EVAL_INPUT_PATH=$PROJECT_HOME"/validation.record"
-LABEL_MAP_PATH=$PROJECT_HOME"/traffic_police.pbtxt"
 
-FINE_TUNE_CHECKPOINT=$PROJECT_HOME"/"$PRETRAINED_MODEL"\model.ckpt" #"\/content\/ssd_mobilenet_v1_coco_2018_01_28\/model.ckpt"
-NUM_EXAMPLES=$(ls -l $TRAIN_IMAGE | grep "^-" | wc -l)
 
 #sed -i 's/input_path: "PATH_TO_BE_CONFIGURED\/mscoco_train.record.*"/input_path: "\/content\/train.record"/g' $PIPELINE_CONFIG_PATH
 #sed -i 's/input_path: "PATH_TO_BE_CONFIGURED\/mscoco_val.record.*"/input_path: "\/content\/validation.record"/g' $PIPELINE_CONFIG_PATH
@@ -67,7 +69,7 @@ sed -i 's/num_examples.*/num_examples: '$NUM_EXAMPLES'/g' $PIPELINE_CONFIG_PATH
 #sed -i 's/batch_size.*/batch_size: 1/g' $PIPELINE_CONFIG_PATH
 
 sed -i 's/fine_tune_checkpoint:.*/fine_tune_checkpoint: "'$FINE_TUNE_CHECKPOINT'"/g' $PIPELINE_CONFIG_PATH
-
+exit
 
 # From the tensorflow/models/research/ directory
 cd /content/models/research
