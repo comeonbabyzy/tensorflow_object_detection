@@ -27,6 +27,8 @@ conda install -y Cython
 conda install -y pillow
 conda install -y lxml
 conda install -y matplotlib
+conda install -c conda-forge pycocotools
+
 #conda install -y tensorboardcolab
 #conda install -y jupyter
 #conda install -y pandas
