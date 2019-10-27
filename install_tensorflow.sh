@@ -17,16 +17,18 @@ cd ~/
 
 wget https://github.com/protocolbuffers/protobuf/releases/download/v3.10.0/protoc-3.10.0-linux-x86_64.zip
 unzip protoc-3.10.0-linux-x86_64.zip 
-cp bin/protoc /usr/local/bin
+sudo cp bin/protoc /usr/local/bin
 
+rm -rf models
 git clone https://github.com/tensorflow/models.git
 
 cd models/research
 
 export PYTHONPATH=$PYTHONPATH";`pwd`;`pwd`/slim"
 
-sudo echo `pwd` > /usr/lib/python3.6/site-packages/tensorflow_model.pth
-sudo echo `pwd\slim' >> /usr/lib/python3.6/site-packages/tensorflow_model.pth
+echo `pwd` > /tmp/tensorflow_model.pth
+echo `pwd\slim` >> /tmp/tensorflow_model.pth
+sudo cp /tmp/tensorflow_model.pth /usr/lib/python3.6/site-packages/tensorflow_model.pth
 
 protoc object_detection/protos/*.proto --python_out=.
 
