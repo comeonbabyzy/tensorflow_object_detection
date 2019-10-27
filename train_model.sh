@@ -22,7 +22,7 @@ TRAIN_INPUT_PATH=$PROJECT_HOME"/train.record"
 EVAL_INPUT_PATH=$PROJECT_HOME"/validation.record"
 LABEL_MAP_PATH=$PROJECT_HOME"/traffic_police.pbtxt"
 FINE_TUNE_CHECKPOINT=$PROJECT_HOME"/"$PRETRAINED_MODEL"/model.ckpt" #"\/content\/ssd_mobilenet_v1_coco_2018_01_28\/model.ckpt"
-NUM_EXAMPLES=$(ls -l $TRAIN_IMAGE | grep "^-" | wc -l)
+NUM_EXAMPLES=$(ls -l $EVAL_IMAGE | grep "^-" | wc -l)
 
 echo $PROJECT_HOME
 echo $TRAIN_IMAGE
