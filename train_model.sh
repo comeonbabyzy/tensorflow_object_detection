@@ -12,13 +12,24 @@ PRETRAINED_MODEL_URL="http://download.tensorflow.org/models/object_detection/ssd
 PIPELINE_CONFIG_URL="https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config"
 PIPELINE_CONFIG_PATH=$PROJECT_HOME"\ssd_mobilenet_v1_coco.config"
 
+TRAIN_INPUT_PATH=$PROJECT_HOME"/train.record"
+EVAL_INPUT_PATH=$PROJECT_HOME"/validation.record"
+LABEL_MAP_PATH=$PROJECT_HOME"/traffic_police.pbtxt"
+FINE_TUNE_CHECKPOINT=$PROJECT_HOME"/"$PRETRAINED_MODEL"\model.ckpt" #"\/content\/ssd_mobilenet_v1_coco_2018_01_28\/model.ckpt"
+NUM_EXAMPLES=$(ls -l $TRAIN_IMAGE | grep "^-" | wc -l)
+
 echo $PROJECT_HOME
 echo $TRAIN_IMAGE
 echo $EVAL_IMAGE
 echo $TRAIN_XML
 echo $EVAL_XML
+echo $TRAIN_INPUT_PATH
+echo $EVAL_INPUT_PATH
+echo $LABEL_MAP_PATH
+echo $FINE_TUNE_CHECKPOINT
+echo $NUM_EXAMPLES
 
-break
+exit
 #cd $PROJECT_HOME
 
 python3 xml_to_csv.py --xml_path=$TRAIN_XML --csv_output=$PROJECT_HOME"/train.csv"
