@@ -11,6 +11,7 @@ sudo pip3 install pillow
 sudo pip3 install lxml
 sudo pip3 install matplotlib
 sudo pip3 install tensorboardcolab
+sudo pip3 install jupyter
 
 wget https://github.com/protocolbuffers/protobuf/releases/download/v3.10.0/protoc-3.10.0-linux-x86_64.zip
 unzip protoc-3.10.0-linux-x86_64.zip 
@@ -26,5 +27,3 @@ echo `pwd` > /usr/lib/python3.6/site-packages/tensorflow_model.pth
 echo `pwd\slim' >> /usr/lib/python3.6/site-packages/tensorflow_model.pth
 
 python3 object_detection/builders/model_builder_test.py
-
-
