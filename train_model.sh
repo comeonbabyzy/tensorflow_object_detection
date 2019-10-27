@@ -37,6 +37,8 @@ rm -rf $PROJECT_HOME
 unzip traffic_police.zip
 cp -r traffic_police ~/content
 
+exit
+
 python3 xml_to_csv.py --xml_path=$TRAIN_XML --csv_output=$PROJECT_HOME"/train.csv"
 python3 xml_to_csv.py --xml_path=$EVAL_XML --csv_output=$PROJECT_HOME"/validation.csv"
 
@@ -69,7 +71,7 @@ sed -i 's/num_examples.*/num_examples: '$NUM_EXAMPLES'/g' $PIPELINE_CONFIG_PATH
 #sed -i 's/batch_size.*/batch_size: 1/g' $PIPELINE_CONFIG_PATH
 
 sed -i 's/fine_tune_checkpoint:.*/fine_tune_checkpoint: "'$FINE_TUNE_CHECKPOINT'"/g' $PIPELINE_CONFIG_PATH
-exit
+
 
 # From the tensorflow/models/research/ directory
 cd /content/models/research
