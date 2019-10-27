@@ -29,7 +29,7 @@ cd models/research
 export PYTHONPATH=$PYTHONPATH";`pwd`;`pwd`/slim"
 
 echo `pwd` > /tmp/tensorflow_model.pth
-echo `pwd`"\slim" >> /tmp/tensorflow_model.pth
+echo `pwd`"/slim" >> /tmp/tensorflow_model.pth
 sudo cp /tmp/tensorflow_model.pth /usr/lib/python3.6/site-packages/tensorflow_model.pth
 
 protoc object_detection/protos/*.proto --python_out=.
