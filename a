@@ -1,9 +1,0 @@
-#!/bin/bash
-
-
-
-python xml_to_csv.py --xml_path='/content/traffic_police/train/annotations' --csv_output='train.csv'
-python xml_to_csv.py --xml_path='/content/traffic_police/validation/annotations' --csv_output='validation.csv'
-
-python generate_TFR.py --image_path='/content/traffic_police/train/images' --csv_input=train.csv --output_path=train.record
-python generate_TFR.py --image_path='/content/traffic_police/validation/images' --csv_input=validation.csv --output_path=validation.record
