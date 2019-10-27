@@ -20,7 +20,7 @@ cd content
 
 wget https://github.com/protocolbuffers/protobuf/releases/download/v3.10.0/protoc-3.10.0-linux-x86_64.zip
 unzip protoc-3.10.0-linux-x86_64.zip -d protoc/ 
-sudo cp protc/bin/protoc /usr/local/bin
+sudo cp protoc/bin/protoc /usr/local/bin
 
 git clone https://github.com/tensorflow/models.git
 
