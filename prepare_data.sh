@@ -1,27 +1,27 @@
 #!/bin/bash
 
-PROJECT_HOME="/home/opc/content/traffic_police"
+export PROJECT_HOME="/home/opc/content/traffic_police"
+export RESEARCH_HOME="/home/opc/content/models/research"
+export PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssd_mobilenet_v1_coco.config"
 
-rm -rf $PROJECT_HOME
-unzip /home/opc/traffic_police.zip -d /home/opc/content
-
-RESEARCH_HOME="/home/opc/content/models/research"
 TRAIN_IMAGE=$PROJECT_HOME"/train/images"
 EVAL_IMAGE=$PROJECT_HOME"/validation/images"
 TRAIN_XML=$PROJECT_HOME"/train/annotations"
 EVAL_XML=$PROJECT_HOME"/validation/annotations"
 
-
 PRETRAINED_MODEL="ssd_mobilenet_v1_coco_2018_01_28"
 PRETRAINED_MODEL_FILE=$PRETRAINED_MODEL".tar.gz"
 PRETRAINED_MODEL_URL="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz"
 PIPELINE_CONFIG_URL="https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config"
-PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssd_mobilenet_v1_coco.config"
 
 TRAIN_INPUT_PATH=$PROJECT_HOME"/train.record"
 EVAL_INPUT_PATH=$PROJECT_HOME"/validation.record"
 LABEL_MAP_PATH=$PROJECT_HOME"/traffic_police.pbtxt"
 FINE_TUNE_CHECKPOINT=$PROJECT_HOME"/"$PRETRAINED_MODEL"/model.ckpt" #"\/content\/ssd_mobilenet_v1_coco_2018_01_28\/model.ckpt"
+
+rm -rf $PROJECT_HOME
+unzip /home/opc/traffic_police.zip -d /home/opc/content
+
 NUM_EXAMPLES=$(ls -l $EVAL_IMAGE | grep "^-" | wc -l)
 
 echo $PROJECT_HOME
