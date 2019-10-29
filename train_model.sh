@@ -2,7 +2,7 @@
 
 PROJECT_HOME="/home/opc/content/traffic_police"
 RESEARCH_HOME="/home/opc/content/models/research"
-PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssd_resnet50_v1_fpn_shared_box_predictor_640x640_coco14_sync.config"
+PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssd_inception_v2_coco.config"
 
 export PYTHONPATH=$PYTHONPATH":"$RESEARCH_HOME":"$RESEARCH_HOME"/slim"
 
