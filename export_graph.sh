@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd /content/models/research/object_detection
+cd $RESEARCH_HOME
+
 python export_inference_graph.py \
   --input_type=image_tensor \
   --pipeline_config_path=$PIPELINE_CONFIG_PATH
