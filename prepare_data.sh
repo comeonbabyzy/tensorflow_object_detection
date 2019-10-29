@@ -1,8 +1,9 @@
 #!/bin/bash
 
+export PYTHONPATH=$PYTHONPATH":"$RESEARCH_HOME":"$RESEARCH_HOME"/slim"
 export PROJECT_HOME="/home/opc/content/traffic_police"
 export RESEARCH_HOME="/home/opc/content/models/research"
-export PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssd_mobilenet_v1_coco.config"
+export PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssd_resnet50_v1_fpn_shared_box_predictor_640x640_coco14_sync.config"
 
 TRAIN_IMAGE=$PROJECT_HOME"/train/images"
 EVAL_IMAGE=$PROJECT_HOME"/validation/images"
