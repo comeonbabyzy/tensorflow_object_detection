@@ -4,20 +4,18 @@
 export PROJECT_HOME="/home/opc/content/traffic_police"
 export RESEARCH_HOME="/home/opc/content/models/research"
 export PYTHONPATH=$PYTHONPATH":"$RESEARCH_HOME":"$RESEARCH_HOME"/slim"
-export PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssd_inception_v2_coco.config"
+
 
 TRAIN_IMAGE=$PROJECT_HOME"/train/images"
 EVAL_IMAGE=$PROJECT_HOME"/validation/images"
 TRAIN_XML=$PROJECT_HOME"/train/annotations"
 EVAL_XML=$PROJECT_HOME"/validation/annotations"
 
-#PRETRAINED_MODEL="ssd_mobilenet_v1_coco_2018_01_28"
-PRETRAINED_MODEL="ssd_inception_v2_coco_2018_01_28"
+PRETRAINED_MODEL="ssdlite_mobilenet_v2_coco_2018_05_09"
 PRETRAINED_MODEL_FILE=$PRETRAINED_MODEL".tar.gz"
-#PRETRAINED_MODEL_URL="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz"
-PRETRAINED_MODEL_URL="http://download.tensorflow.org/models/object_detection/ssd_inception_v2_coco_2018_01_28.tar.gz"
-#PIPELINE_CONFIG_URL="https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config"
-PIPELINE_CONFIG_URL="https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssd_inception_v2_coco.config"
+PRETRAINED_MODEL_URL="http://download.tensorflow.org/models/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09.tar.gz"
+PIPELINE_CONFIG_URL="https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/ssdlite_mobilenet_v2_coco.config"
+export PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssdlite_mobilenet_v2_coco.config"
 
 TRAIN_INPUT_PATH=$PROJECT_HOME"/train.record"
 EVAL_INPUT_PATH=$PROJECT_HOME"/validation.record"
