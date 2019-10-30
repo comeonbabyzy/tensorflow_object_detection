@@ -5,7 +5,6 @@ export PROJECT_HOME="/home/opc/content/traffic_police"
 export RESEARCH_HOME="/home/opc/content/models/research"
 export PYTHONPATH=$PYTHONPATH":"$RESEARCH_HOME":"$RESEARCH_HOME"/slim"
 
-
 TRAIN_IMAGE=$PROJECT_HOME"/train/images"
 EVAL_IMAGE=$PROJECT_HOME"/validation/images"
 TRAIN_XML=$PROJECT_HOME"/train/annotations"
@@ -15,7 +14,8 @@ PRETRAINED_MODEL_URL="http://download.tensorflow.org/models/object_detection/fas
 PRETRAINED_MODEL="faster_rcnn_resnet101_coco_2018_01_28"
 PRETRAINED_MODEL_FILE=$PRETRAINED_MODEL".tar.gz"
 PIPELINE_CONFIG_URL="https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/samples/configs/faster_rcnn_resnet101_coco.config"
-export PIPELINE_CONFIG_PATH=$PROJECT_HOME"/faster_rcnn_resnet101_coco.config"
+PIPELINE_CONFIG_PATH=$PROJECT_HOME"/faster_rcnn_resnet101_coco.config"
+PIPELINE_CONFIG=$PROJECT_HOME"/pipeline.config"
 
 TRAIN_INPUT_PATH=$PROJECT_HOME"/train.record"
 EVAL_INPUT_PATH=$PROJECT_HOME"/validation.record"
@@ -54,17 +54,18 @@ wget $PRETRAINED_MODEL_URL
 tar zxvf $PRETRAINED_MODEL_FILE
 
 wget $PIPELINE_CONFIG_URL
+cp $PIPELINE_CONFIG_PATH $PIPELINE_CONFIG
 
-#sed -i 's/input_path: "PATH_TO_BE_CONFIGURED\/mscoco_train.record.*"/input_path: "\/content\/train.record"/g' $PIPELINE_CONFIG_PATH
-#sed -i 's/input_path: "PATH_TO_BE_CONFIGURED\/mscoco_val.record.*"/input_path: "\/content\/validation.record"/g' $PIPELINE_CONFIG_PATH
-#sed -i 's/label_map_path: "PATH_TO_BE_CONFIGURED\/mscoco_label_map.pbtxt"/label_map_path: "\/content\/traffic_police.pbtxt"/g' $PIPELINE_CONFIG_PATH
+#sed -i 's/input_path: "PATH_TO_BE_CONFIGURED\/mscoco_train.record.*"/input_path: "\/content\/train.record"/g' $PIPELINE_CONFIG
+#sed -i 's/input_path: "PATH_TO_BE_CONFIGURED\/mscoco_val.record.*"/input_path: "\/content\/validation.record"/g' $PIPELINE_CONFIG
+#sed -i 's/label_map_path: "PATH_TO_BE_CONFIGURED\/mscoco_label_map.pbtxt"/label_map_path: "\/content\/traffic_police.pbtxt"/g' $PIPELINE_CONFIG
 
-sed -i 's/input_path: "PATH_TO_BE_CONFIGURED.*train.*"/input_path: "'${TRAIN_INPUT_PATH//\//\\\/}'"/g' $PIPELINE_CONFIG_PATH
-sed -i 's/input_path: "PATH_TO_BE_CONFIGURED.*val.*"/input_path: "'${EVAL_INPUT_PATH//\//\\\/}'"/g' $PIPELINE_CONFIG_PATH
-sed -i 's/label_map_path.*"/label_map_path: "'${LABEL_MAP_PATH//\//\\\/}'"/g' $PIPELINE_CONFIG_PATH
+sed -i 's/input_path: "PATH_TO_BE_CONFIGURED.*train.*"/input_path: "'${TRAIN_INPUT_PATH//\//\\\/}'"/g' $PIPELINE_CONFIG
+sed -i 's/input_path: "PATH_TO_BE_CONFIGURED.*val.*"/input_path: "'${EVAL_INPUT_PATH//\//\\\/}'"/g' $PIPELINE_CONFIG
+sed -i 's/label_map_path.*"/label_map_path: "'${LABEL_MAP_PATH//\//\\\/}'"/g' $PIPELINE_CONFIG
 
-sed -i 's/num_classes.*/num_classes: 1/g' $PIPELINE_CONFIG_PATH
-sed -i 's/num_examples.*/num_examples: '$NUM_EXAMPLES'/g' $PIPELINE_CONFIG_PATH
-#sed -i 's/batch_size.*/batch_size: 1/g' $PIPELINE_CONFIG_PATH
+sed -i 's/num_classes.*/num_classes: 1/g' $PIPELINE_CONFIG
+sed -i 's/num_examples.*/num_examples: '$NUM_EXAMPLES'/g' $PIPELINE_CONFIG
+#sed -i 's/batch_size.*/batch_size: 1/g' $PIPELINE_CONFIG
 
-sed -i 's/fine_tune_checkpoint:.*/fine_tune_checkpoint: "'${FINE_TUNE_CHECKPOINT//\//\\\/}'"/g' $PIPELINE_CONFIG_PATH
+sed -i 's/fine_tune_checkpoint:.*/fine_tune_checkpoint: "'${FINE_TUNE_CHECKPOINT//\//\\\/}'"/g' $PIPELINE_CONFIG
