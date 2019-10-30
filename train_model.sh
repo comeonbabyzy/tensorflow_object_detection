@@ -2,7 +2,7 @@
 
 PROJECT_HOME="/home/opc/content/traffic_police"
 RESEARCH_HOME="/home/opc/content/models/research"
-PIPELINE_CONFIG_PATH=$PROJECT_HOME"/ssdlite_mobilenet_v2_coco.config"
+PIPELINE_CONFIG_PATH=$PROJECT_HOME"/pipeline.config"
 
 export PYTHONPATH=$PYTHONPATH":"$RESEARCH_HOME":"$RESEARCH_HOME"/slim"
 
