@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PROJECT_HOME="/home/opc/content/traffic_police"
+export PROJECT_HOME="/data/traffic_police"
 export RESEARCH_HOME="/home/opc/content/models/research"
 export PYTHONPATH=$PYTHONPATH":"$RESEARCH_HOME":"$RESEARCH_HOME"/slim"
 PIPELINE_CONFIG=$PROJECT_HOME"/pipeline.config"
