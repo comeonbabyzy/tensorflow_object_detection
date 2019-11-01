@@ -9,5 +9,5 @@ cd $RESEARCH_HOME
 python export_inference_graph.py \
   --input_type=image_tensor \
   --pipeline_config_path=$PIPELINE_CONFIG \
-  --trained_checkpoint_prefix=$PROJECT_HOME"/model.ckpt-10076" \
+  --trained_checkpoint_prefix=$PROJECT_HOME"/model.ckpt-190120" \
   --output_directory=$PROJECT_HOME"/traffic_police_inference_graph"
