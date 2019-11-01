@@ -45,11 +45,15 @@ from object_detection.utils import visualization_utils as vis_util
 # What model to download.
 MODEL_NAME = 'traffic_police_inference_graph'
 
+PROJECT_HOME = '/data/content/traffic_police'
+
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-PATH_TO_CKPT = '/home/opc/content/traffic_police_inference_graph/frozen_inference_graph.pb'
+PATH_TO_CKPT = os.path.join(PROJECT_HOME, 'traffic_police_inference_graph/frozen_inference_graph.pb')
+#PROJECT_HOME + '/traffic_police_inference_graph/frozen_inference_graph.pb'
 
 # List of the strings that is used to add correct label for each box.
-PATH_TO_LABELS = '/home/opc/content/traffic_police/traffic_police.pbtxt'
+#PATH_TO_LABELS = '/home/opc/content/traffic_police/traffic_police.pbtxt'
+PATH_TO_LABELS = os.path.join(PROJECT_HOME, 'traffic_police.pbtxt')
 
 NUM_CLASSES = 1
 
