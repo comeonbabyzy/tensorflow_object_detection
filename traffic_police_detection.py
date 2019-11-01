@@ -61,7 +61,7 @@ NUM_CLASSES = 1
 # image1.jpg
 # image2.jpg
 # If you want to test the code with your images, just add path to the images to the TEST_IMAGE_PATHS.
-PATH_TO_TEST_IMAGES_DIR = os.path.join(PROJECT_HOME, "test_images')
+PATH_TO_TEST_IMAGES_DIR = os.path.join(PROJECT_HOME, "test_images")
 #TEST_IMAGE_PATHS = [ os.path.join(PATH_TO_TEST_IMAGES_DIR, 'image{}.jpg'.format(i)) for i in range(1, 3) ]
 TEST_IMAGE_PATHS = os.listdir(PATH_TO_TEST_IMAGES_DIR)
 os.chdir(PATH_TO_TEST_IMAGES_DIR)
@@ -91,9 +91,6 @@ def load_image_into_numpy_array(image):
   (im_width, im_height) = image.size
   return np.array(image.getdata()).reshape(
       (im_height, im_width, 3)).astype(np.uint8)
-
-
-
 
 def run_inference_for_single_image(image, graph):
   with graph.as_default():
