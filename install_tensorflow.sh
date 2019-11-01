@@ -21,8 +21,8 @@ COMMENT
 wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
 bash Anaconda3-2019.10-Linux-x86_64.sh
 
-conda install -y tensorflow==1.12.0
-conda install -y tensorflow-gpu==1.12.0
+conda install -y tensorflow==1.14.0
+conda install -y tensorflow-gpu==1.14.0
 conda install -y Cython
 conda install -y pillow
 conda install -y lxml
